@@ -3,11 +3,13 @@ package hello.core;
 import hello.core.discount.DiscountPolicy;
 import hello.core.discount.FixDiscountPolicy;
 import hello.core.discount.RateDiscountPolicy;
+import hello.core.member.MemberRepository;
 import hello.core.member.MemberService;
 import hello.core.member.MemberServiceImpl;
 import hello.core.member.MemoryMemberRepository;
 import hello.core.order.OrderService;
 import hello.core.order.OrderServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -17,6 +19,8 @@ public class AppConfig {
     //@Bean memberService -> new MemoryMemberRepository()
     //@Bean orderService -> new MemoryMemberRepository()
 
+    //@Autowired MemberRepository memberRepository;
+
     @Bean
     public MemberService memberService(){
         System.out.println("call AppConfig.memberService");
@@ -24,7 +28,7 @@ public class AppConfig {
     }
 
     @Bean
-    public static MemoryMemberRepository memberRepository() {
+    public MemberRepository memberRepository() {
         System.out.println("call AppConfig.memberRepository");
         return new MemoryMemberRepository();
     }
